@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="runway">
+    <plugin filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+    <plugin name="gz::sim::systems::Sensors"
+      filename="gz-sim-sensors-system">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <scene>
+      <ambient>1.0 1.0 1.0</ambient>
+      <background>0.8 0.8 0.8</background>
+      <sky></sky>
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.8 0.8 0.8 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <include>
+      <pose degrees="true">42.44 117 -1.82 0 0 363</pose>
+      <uri>model://baylands_terrain</uri>
+    </include>
+
+    <include>
+      <pose degrees="true">-0.87 -1.75 -0.20 0 0 -8.59</pose>
+      <uri>model://alti_transition_quad</uri>
+    </include>
+    
+    <model name="fog_generator">
+      <pose>80 5 0 0 -1.5707 0</pose>
+      <static>true</static>
+      <link name="fog_link">
+        <particle_emitter name="emitter" type="box">
+          <emitting>true</emitting>
+          <size>10 10 50</size>
+          <particle_size>1 1 1</particle_size>
+          <lifetime>40</lifetime>
+          <min_velocity>0.1</min_velocity>
+          <max_velocity>0.2</max_velocity>
+          <scale_rate>0.5</scale_rate>
+          <rate>10</rate>
+          <material>
+            <diffuse>0.7 0.7 0.7</diffuse>
+            <specular>1.0 1.0 1.0</specular>
+            <pbr>
+              <metal>
+                <albedo_map>materials/textures/fog.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+          <color_range_image>materials/textures/fogcolor.png</color_range_image>
+        </particle_emitter>
+      </link>
+    </model>
+  </world>
+</sdf>
