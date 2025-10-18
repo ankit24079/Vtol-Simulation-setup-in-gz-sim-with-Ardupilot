@@ -1,8 +1,5 @@
 # Setting up GZ-Sim with ArduPilot
 
-A guide for setting up a complete simulation environment for **ArduPilot** with **Gazebo (GZ-Sim)**.
-Based on the work by *Ankit Kumar* and *Jiarong Hong*, Mechanical Engineering & Saint Anthony Falls Laboratory, University of Minnesota.
-
 This setup is intended for a **VTOL (Vertical Takeoff and Landing) QuadPlane** model.
 
 ---
@@ -265,3 +262,4 @@ Insert the fog generator XML inside `<world>` and adjust:
 ---
 
 **✅ You’re now ready to simulate VTOL aircraft in Gazebo Harmonic with ArduPilot SITL and ROS 2 integration.**
+
